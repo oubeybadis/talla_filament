@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('uploaded_images', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('description');
+            $table->string('path');
+            $table->integer('size');
+            $table->boolean('isFavorite')->default(false);
+
             $table->timestamps();
         });
     }

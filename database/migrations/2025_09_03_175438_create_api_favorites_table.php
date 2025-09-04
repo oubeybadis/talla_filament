@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('api_favorites', function (Blueprint $table) {
             $table->id();
+            $table->string('artwork_id');
+            $table->string('artwork_title');
+            $table->text('api_image_url');
             $table->timestamps();
         });
     }
