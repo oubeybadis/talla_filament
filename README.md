@@ -135,7 +135,7 @@ MIT License - see LICENSE file for details.
 /*
 {
     "require": {
-        "filament/filament": "^3.0",
+        "filament/filament": "^4.0",
         "intervention/image": "^2.7"
     }
 }
