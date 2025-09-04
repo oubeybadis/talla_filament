@@ -1,61 +1,347 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Talla Filament - Art Gallery Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A modern Laravel application built with Filament that provides an elegant interface for browsing, managing, and organizing artwork from the Art Institute of Chicago API. This application allows users to explore public domain artworks, save favorites, and manage their personal image collections.
 
-## About Laravel
+## 🎨 Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Art Gallery
+- **Browse Artworks**: Explore thousands of public domain artworks from the Art Institute of Chicago
+- **Search Functionality**: Search through artworks by title, artist, or other metadata
+- **High-Quality Images**: View artworks in high resolution with zoom capabilities
+- **Responsive Design**: Beautiful, modern interface that works on all devices
+- **Pagination**: Navigate through large collections efficiently
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Favorites System
+- **Save Favorites**: Mark your favorite artworks for quick access
+- **Favorites Management**: View and manage all your saved favorites in one place
+- **Persistent Storage**: Favorites are saved to the database and persist across sessions
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Image Management
+- **Upload Images**: Upload and manage your own image collections
+- **Image Metadata**: Store title, description, and file information
+- **File Management**: Automatic file cleanup and organization
+- **Download Capability**: Download high-resolution images from the API
 
-## Learning Laravel
+### Technical Features
+- **API Integration**: Seamless integration with Art Institute of Chicago API
+- **Caching**: Intelligent caching for improved performance
+- **Error Handling**: Robust error handling and user feedback
+- **Modern UI**: Built with Filament and Tailwind CSS for a premium experience
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🛠️ Technology Stack
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Backend**: Laravel 12.x
+- **Admin Panel**: Filament 4.0
+- **Frontend**: Livewire, Alpine.js, Tailwind CSS
+- **Database**: SQLite (configurable)
+- **Build Tools**: Vite
+- **API**: Art Institute of Chicago API
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 📋 Prerequisites
 
-## Laravel Sponsors
+Before you begin, ensure you have the following installed:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- **PHP**: 8.2 or higher
+- **Composer**: Latest version
+- **Node.js**: 18.x or higher
+- **NPM**: Latest version
+- **Git**: For version control
 
-### Premium Partners
+## 🚀 Installation
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 1. Clone the Repository
 
-## Contributing
+```bash
+git clone <repository-url>
+cd talla_filament
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 2. Install PHP Dependencies
 
-## Code of Conduct
+```bash
+composer install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 3. Install Node.js Dependencies
 
-## Security Vulnerabilities
+```bash
+npm install
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 4. Environment Configuration
 
-## License
+Copy the environment file and configure your settings:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+cp .env.example .env
+```
+
+Edit the `.env` file with your configuration:
+
+```env
+APP_NAME="Talla Filament"
+APP_ENV=local
+APP_KEY=
+APP_DEBUG=true
+APP_URL=http://localhost:8000
+
+# Database Configuration (SQLite by default)
+DB_CONNECTION=sqlite
+DB_DATABASE=database/database.sqlite
+
+# Cache Configuration
+CACHE_DRIVER=file
+SESSION_DRIVER=file
+QUEUE_CONNECTION=sync
+
+# Mail Configuration (optional)
+MAIL_MAILER=log
+```
+
+### 5. Generate Application Key
+
+```bash
+php artisan key:generate
+```
+
+### 6. Database Setup
+
+Create the SQLite database file and run migrations:
+
+```bash
+touch database/database.sqlite
+php artisan migrate
+```
+
+### 7. Create Admin User
+
+Create your first admin user:
+
+```bash
+php artisan make:filament-user
+```
+
+Follow the prompts to create your admin account.
+
+### 8. Build Assets
+
+Build the frontend assets:
+
+```bash
+npm run build
+```
+
+## 🏃‍♂️ Running the Application
+
+### Development Mode
+
+For development, you can use the convenient dev script that runs multiple services:
+
+```bash
+composer run dev
+```
+
+This command will start:
+- Laravel development server (http://localhost:8000)
+- Queue worker
+- Log monitoring
+- Vite development server
+
+### Manual Setup
+
+Alternatively, you can run services manually:
+
+1. **Start Laravel Server**:
+   ```bash
+   php artisan serve
+   ```
+
+2. **Start Vite Dev Server** (in another terminal):
+   ```bash
+   npm run dev
+   ```
+
+3. **Start Queue Worker** (optional, in another terminal):
+   ```bash
+   php artisan queue:work
+   ```
+
+### Production Mode
+
+For production deployment:
+
+```bash
+npm run build
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+```
+
+## 📁 Project Structure
+
+```
+talla_filament/
+├── app/
+│   ├── Filament/
+│   │   ├── Pages/           # Custom Filament pages
+│   │   └── Resources/       # Filament resources
+│   ├── Models/              # Eloquent models
+│   │   ├── ApiFavorite.php  # API favorites model
+│   │   ├── UploadedImage.php # Uploaded images model
+│   │   └── User.php         # User model
+│   └── services/
+│       └── ApiService.php   # Art Institute API service
+├── database/
+│   ├── migrations/          # Database migrations
+│   └── database.sqlite      # SQLite database
+├── resources/
+│   ├── views/
+│   │   └── filament/        # Custom Filament views
+│   ├── css/                 # Stylesheets
+│   └── js/                  # JavaScript files
+├── public/                  # Public assets
+└── storage/                 # File storage
+```
+
+## 🎯 Usage
+
+### Accessing the Application
+
+1. Navigate to `http://localhost:8000/admin`
+2. Log in with your admin credentials
+3. Explore the different sections:
+   - **Gallery**: Browse and search artworks
+   - **Favorites**: Manage your saved artworks
+   - **Uploaded Images**: Manage your uploaded images
+
+### Key Features Usage
+
+#### Browsing Artworks
+- Use the search bar to find specific artworks
+- Click on images to view them in full resolution
+- Use pagination to browse through collections
+- Click the heart icon to add/remove favorites
+
+#### Managing Favorites
+- All favorited artworks appear in the Favorites section
+- Remove favorites by clicking the heart icon again
+- Favorites persist across sessions
+
+#### Uploading Images
+- Use the file upload functionality to add your own images
+- Provide titles and descriptions for better organization
+- Mark images as favorites for quick access
+
+## 🔧 Configuration
+
+### API Configuration
+
+The application uses the Art Institute of Chicago API. The API service is configured in `app/services/ApiService.php`:
+
+- **Base URL**: `https://api.artic.edu/api/v1`
+- **Image URL**: `https://www.artic.edu/iiif/2`
+- **Caching**: 5 minutes for search results, 1 hour for public domain IDs
+
+### Database Configuration
+
+The application uses SQLite by default but can be configured for other databases:
+
+```env
+# For MySQL
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=talla_filament
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+
+# For PostgreSQL
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_DATABASE=talla_filament
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
+
+## 🧪 Testing
+
+Run the test suite:
+
+```bash
+composer run test
+```
+
+Or manually:
+
+```bash
+php artisan test
+```
+
+## 📦 Deployment
+
+### Production Checklist
+
+1. **Environment Configuration**:
+   ```bash
+   APP_ENV=production
+   APP_DEBUG=false
+   ```
+
+2. **Optimize Application**:
+   ```bash
+   php artisan config:cache
+   php artisan route:cache
+   php artisan view:cache
+   php artisan optimize
+   ```
+
+3. **Build Assets**:
+   ```bash
+   npm run build
+   ```
+
+4. **Set Permissions**:
+   ```bash
+   chmod -R 755 storage bootstrap/cache
+   ```
+
+### Server Requirements
+
+- PHP 8.2+
+- Composer
+- Node.js 18+
+- Web server (Apache/Nginx)
+- SSL certificate (recommended)
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## 🆘 Support
+
+If you encounter any issues or have questions:
+
+1. Check the [Laravel documentation](https://laravel.com/docs)
+2. Check the [Filament documentation](https://filamentphp.com/docs)
+3. Review the application logs in `storage/logs/laravel.log`
+4. Create an issue in the repository
+
+## 🙏 Acknowledgments
+
+- [Laravel](https://laravel.com/) - The PHP framework
+- [Filament](https://filamentphp.com/) - The admin panel framework
+- [Art Institute of Chicago](https://www.artic.edu/) - For providing the amazing API
+- [Tailwind CSS](https://tailwindcss.com/) - For the beautiful styling
+
+---
+
+**Happy coding! 🎨✨**
